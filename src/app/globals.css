@@ -1,24 +1,27 @@
 :root {
-  --background: #121212;
+  --background: #020b19;
   --foreground: #fff;
   --spotify-green: #1ed760;
+  --spotify-dark-green: #11863a;
   --spotify-dark-grey: #212121;
   --spotify-grey: #2a2a2a;
   --spotify-light-grey: #3f3f3f;
   --spotify-grey-text: #b3b3b3;
+  --blue-grey: #4575b8;
+  --dark-blue: #091933;
+  --medium-blue: #1B4683;
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  width: 100vw;
+  min-height: 100vh;
 }
 
 body {
-  color-scheme: dark;
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-image: radial-gradient(ellipse at center, var(--dark-blue) 0%, #000 100%);
+  font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -34,10 +37,29 @@ a {
 
 button {
   cursor: pointer;
+  font-family: var(--font-inter);
+}
+
+h1, h2 {
+  font-family: var(--font-cinzel);
+  font-weight: 500;
+}
+
+h2 {
+  margin-left: 12px;
 }
 
 .flex-column {
   display: flex;
-  flex-direction: column
-  ;
+  flex-direction: column;
 }
+
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.grey-font {
+  color: var(--spotify-grey-text);
+}
+

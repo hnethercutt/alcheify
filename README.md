@@ -129,4 +129,4 @@ For the background animation and loading screen animation, I used the following 
 
 [CSS Particles by rauldronca](https://codepen.io/rauldronca/pen/LgXPgJ)
 
-<p align="right"><a href="#readme-top">back to top</a></p>
+<p align="right">(<a href="#readme">Back to top</a>)</p>

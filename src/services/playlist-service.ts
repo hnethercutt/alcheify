@@ -10,6 +10,10 @@ export async function generatePlaylist(requestData: PlaylistRequest): Promise<st
 
     // The generate api handles the entire playlist generation process, so by this point the user has their playlist
     const result = await res.json();
+
+    if(result.error) {
+        throw new Error(result.error);
+    }
     // So all we need to return is the url in order to embed the playlist on the success page
     return result.playlistUrl;
 }

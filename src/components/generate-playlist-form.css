@@ -4,7 +4,6 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    isolation: isolate;
 }
 
 .generate-form-container {

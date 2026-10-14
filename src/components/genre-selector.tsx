@@ -13,6 +13,8 @@ interface GenreSelectorProps {
 
 export default function GenreSelector({ onGenresSelected }: GenreSelectorProps) {
   const [checkedGenres, setCheckedGenres] = useState<string[]>([]);
+  const genreList1 = genreData.slice(0, 12);
+  const genreList2 = genreData.slice(12)
 
     useEffect(() => {
         // Notify parent component when genres/subgenres are checked/unchecked
@@ -77,9 +79,45 @@ export default function GenreSelector({ onGenresSelected }: GenreSelectorProps) 
           }
         }}
       >
+<<<<<<< Updated upstream:src/components/genre-selector.tsx
         <DialogContent sx={{pb: 0}}>
           <List className='flex-column'>
             {genreData.map((genre, index) => (
+=======
+        <DialogContent sx={{ pb: 0, display: "flex" }}>
+          <List className="flex-column" sx={{ pr:4 }}>
+            {genreList1.map((genre, index) => (
+              <ListItem key={index}>
+                <ListItemIcon>
+                  <Checkbox
+                    size="small"
+                    edge="start"
+                    sx={{
+                      color: '#b3b3b3',
+                      '&.Mui-checked': {
+                        color: '#1ed760',
+                      },
+                    }}
+                    disableRipple
+                    checked={checkedGenres.includes(genre)}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={() => handleCheckGenre(genre)}
+                  />
+                </ListItemIcon>
+                <ListItemText
+                  primary={genre}
+                  sx={{
+                    '& .MuiListItemText-primary': {
+                      fontSize: '16px',
+                    },
+                  }}
+                />
+              </ListItem>
+            ))}
+          </List>
+          <List className="flex-column">
+            {genreList2.map((genre, index) => (
+>>>>>>> Stashed changes:src/components/generate/genre-selector.tsx
               <ListItem key={index}>
                 <ListItemIcon>
                   <Checkbox

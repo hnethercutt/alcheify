@@ -22,10 +22,15 @@ export async function fetchSongSearchResults(searchTerm: string): Promise<Array<
         const searchResults = await _apiResponse.json();
         // Need to convert each song to the custom SpotifySong type
         spotifySongs = _.map(searchResults.items, function(_searchResultItem) {
+            let songArtists: string[] = [];
+            // Put all artists together for each song so featured artists can be displayed
+            _.forEach(_searchResultItem.artists, function(_artist) {
+                songArtists.push(_artist.name);
+            });
+
             return {
                 title: _searchResultItem.name,
-                // Later I need to modify this so featured artists also show
-                artist: _searchResultItem.artists[0].name,
+                artists: songArtists.join(', '),
                 album: _searchResultItem.album.name,
                 // 3rd image is the largest, so pulling that one specifically
                 coverArtUrl: _searchResultItem.album.images[2].url,

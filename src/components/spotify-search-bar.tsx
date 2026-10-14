@@ -102,7 +102,7 @@ export default function SpotifySearchBar({ onSongSelected, onArtistSelected }: S
               ></Image>
               <div className="result-text">
                 <span className="track-name">{item.title}</span>
-                <span className="artist-name">Song &sdot; {item.artist}</span>
+                <span className="artist-name">Song &sdot; {item.artists}</span>
               </div>
             </div>
           ))}

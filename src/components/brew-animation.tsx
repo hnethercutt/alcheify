@@ -8,7 +8,7 @@ export default function BrewAnimation() {
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    if (!container) { return };
 
     const fragment = document.createDocumentFragment();
     const particleCount = 180;
@@ -28,7 +28,6 @@ export default function BrewAnimation() {
 
       const angle = Math.random() * Math.PI * 2;
 
-      // Much larger burst, spreading across the viewport
       const distance = 150 + Math.random() * 550;
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * distance;
@@ -57,12 +56,7 @@ export default function BrewAnimation() {
 
   return (
     <div className="brew-loading-overlay" role="status">
-      <div
-        className="brew-particle-container"
-        ref={containerRef}
-        aria-hidden="true"
-      />
-
+      <div className="brew-particle-container" ref={containerRef} aria-hidden="true"/>
       <div className="brew-loading-content">
         <div className="brew-orb">
           <Image
@@ -73,7 +67,6 @@ export default function BrewAnimation() {
             loading="eager"
           ></Image>
         </div>
-
         <h2>Brewing your playlist</h2>
       </div>
     </div>

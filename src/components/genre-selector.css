@@ -1,0 +1,35 @@
+.genre-btn-container {
+    width: 100%;
+    display: flex;
+    margin: 18px 0px;
+    justify-content: center;
+}
+
+.genre-btn {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    width: fit-content;
+    padding: 8px 16px;
+    background-color: oklch(from var(--spotify-green) 1 c h / 0.25);
+    border: 2px solid var(--spotify-green);
+    border-radius: 12px;
+    color: var(--spotify-green);
+}
+
+.close-btn {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    margin-bottom: 12px;
+    background-color: var(--spotify-green);
+    border: 2px solid var(--spotify-green);
+    border-radius: 12px;
+    color: var(--spotify-dark-grey);
+}
+
+.genre-btn:hover,
+.close-btn:hover {
+    background-color: var(--spotify-dark-green);
+    color: var(--foreground);
+}

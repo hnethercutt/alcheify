@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { SpotifyArtist, SpotifySong } from '@/types/playlist';
 import { fetchSongSearchResults, fetchArtistSearchResults } from '@/services/playlist-service';
+import { SearchOutlined } from '@mui/icons-material';
 import Image from 'next/image';
 import _ from 'lodash';
 import './spotify-search-bar.css';
@@ -79,7 +80,8 @@ export default function SpotifySearchBar({ onSongSelected, onArtistSelected }: S
 
   return (
     <div ref={searchRef} className="search-bar-container">
-      <form>
+      <form className='flex-row'>
+        <SearchOutlined sx={{p:1}}/>
         <input
           type="text"
           placeholder={onSongSelected ? 'Search for a song...' : 'Search for an artist...'}

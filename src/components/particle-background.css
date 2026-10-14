@@ -1,0 +1,72 @@
+.particle-background {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.circle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  animation: float-up var(--duration) linear var(--delay) infinite;
+  will-change: transform;
+}
+
+.circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  background-image: radial-gradient(
+    circle,
+    var(--spotify-dark-green) 0%,
+    oklch(from var(--spotify-green) 1 c h/0.9) 10%,
+    oklch(from var(--spotify-green) 1 c h/0) 56%
+  );
+
+  mix-blend-mode: screen;
+  animation:
+    fade 4s ease-in-out infinite,
+    pulse 5s ease-in-out infinite;
+}
+
+@keyframes float-up {
+  from {
+    transform: translate3d(var(--start-x), var(--start-y), 0);
+  }
+
+  to {
+    transform: translate3d(var(--end-x), var(--end-y), 0);
+  }
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale3d(0.4, 0.4, 1);
+  }
+
+  50% {
+    transform: scale3d(2.2, 2.2, 1);
+  }
+}

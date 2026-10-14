@@ -48,7 +48,7 @@ export default function SpotifySearchBar({ onSongSelected, onArtistSelected }: S
     setSearchTerm(e.target.value);
   };
 
-  // Pass back the data for the song that was clicked and clear the results display
+  // Pass back the data for the song (or artist, func. below) that was clicked and clear the results display
   const handleSongClick = (selectedSong: SpotifySong) => {
     onSongSelected?.(selectedSong);
     setSongResults([]);

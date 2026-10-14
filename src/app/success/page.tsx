@@ -11,6 +11,7 @@ export default function Success() {
     const playlistUrl = params.get('playlistUrl');
     const [embed, setEmbed] = useState<string>('');
 
+    // Display embedded playlist
     useEffect(() => {
         if (playlistUrl) {
             fetchSpotifyPlaylist(playlistUrl).then(function (_embedHtml) {

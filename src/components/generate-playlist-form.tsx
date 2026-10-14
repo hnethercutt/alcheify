@@ -124,6 +124,7 @@ export default function GeneratePlaylistForm() {
               multiline
               rows={3}
               onChange={updateFormInput}
+              autoComplete="off"
               placeholder='Looking out a backseat car window on a foggy, rainy day...'
               sx={{
                 width: '500px',
@@ -351,6 +352,7 @@ export default function GeneratePlaylistForm() {
         </div>
         <div className='notes flex-column'>
           <TextField
+            autoComplete='off'
             name='notes'
             multiline
             rows={3}

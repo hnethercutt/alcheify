@@ -24,7 +24,6 @@ export default function GeneratePlaylistForm() {
     generateTitleAndDescription: true
   });
 
-  // Will probably condense all of these later
   const handleRefSongSelected = (selectedSong: SpotifySong) => {
     setRequestFormData((prevRequestFormData) => ({
       ...prevRequestFormData,
@@ -32,24 +31,20 @@ export default function GeneratePlaylistForm() {
     }));
   };
 
-  const deleteRefSong = (indexToRemove: number) => {
+  // Remove data from the form when a chip is removed (for reference songs and excluded artists)
+  const deleteChipData = (indexToRemove: number, type: string) => {
+    let data = (type == 'referenceSongs' ? requestFormData.referenceSongs : requestFormData.excludeArtists);
+
     setRequestFormData((prevRequestFormData) => ({
       ...prevRequestFormData,
-      referenceSongs: prevRequestFormData.referenceSongs?.filter((_, index) => index !== indexToRemove),
+      [type]: data?.filter((_, index) => index !== indexToRemove),
     }));
-  };
+  }
 
   const handleExcludeArtistSelected = (selectedArtist: SpotifyArtist) => {
     setRequestFormData((prevRequestFormData) => ({
       ...prevRequestFormData,
       excludeArtists: [...(prevRequestFormData.excludeArtists ?? []), selectedArtist],
-    }));
-  };
-
-  const deleteExcludeArtist = (indexToRemove: number) => {
-    setRequestFormData((prevRequestFormData) => ({
-      ...prevRequestFormData,
-      excludeArtists: prevRequestFormData.excludeArtists?.filter((_, index) => index !== indexToRemove),
     }));
   };
 
@@ -60,33 +55,28 @@ export default function GeneratePlaylistForm() {
     }));
   };
 
-  const handleDupeArtistsSelected = (e: React.ChangeEvent<HTMLInputElement>, value: string) => {
-    setRequestFormData(prevRequestFormData => ({
-      ...prevRequestFormData,
-      allowDuplicateArtists: value === 'true' ? true : false
-    }));
-  };
+  // Used to keep track of radio group options
+  const id = useId();
+  // For all radio option sections (dupe artists, include ref songs, generate title and description)
+  const handleYesNoSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let { name, value } = e.target;
 
-  const handleIncludeRefSongsSelected = (e: React.ChangeEvent<HTMLInputElement>, value: string) => {
     setRequestFormData(prevRequestFormData => ({
       ...prevRequestFormData,
-      includeReferenceSongs: value === 'true' ? true : false
-    }));
-  };
-
-  const handleGenTitleAndDescSelected = (e: React.ChangeEvent<HTMLInputElement>, value: string) => {
-    setRequestFormData(prevRequestFormData => ({
-      ...prevRequestFormData,
-      generateTitleAndDescription: value === 'true' ? true : false
+      [name]: value === 'true' ? true : false
     }));
   };
 
   const router = useRouter();
-
+  // For loading animation
   const [isBrewing, setIsBrewing] = useState(false);
-  const generateBtnClicked = async (e: React.MouseEvent<HTMLButtonElement>) => {
+
+  // Generate the playlist and redirect to the success page
+  const brewPlaylistBtnClicked = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    // Don't need to set back to false because the page changes after completion/state resets automatically
     setIsBrewing(true);
+    // Pass the playlist url to the success page so the embedded playlist can be fetched
     generatePlaylist(requestFormData).then(function(_playlistUrl) {
       let params = new URLSearchParams();
       params.set('playlistUrl', `${_playlistUrl}`);
@@ -94,6 +84,7 @@ export default function GeneratePlaylistForm() {
     });
   };
 
+  // For the text fields (essence/vibe and additional notes)
   const updateFormInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     let { name, value } = e.target;
@@ -103,8 +94,6 @@ export default function GeneratePlaylistForm() {
       [name]: value,
     }));
   };
-
-  const id = useId();
 
   return (
     <div className='page'>
@@ -166,7 +155,7 @@ export default function GeneratePlaylistForm() {
                   {requestFormData.referenceSongs?.map((item, index) => (
                     <div key={index}>
                       <Chip
-                        label={`${item.title} - ${item.artist}`}
+                        label={`${item.title} - ${item.artists}`}
                         variant="outlined"
                         sx={{
                           mt: 1,
@@ -175,7 +164,7 @@ export default function GeneratePlaylistForm() {
                           borderColor: "var(--spotify-green)",
                           "& .MuiChip-deleteIcon": { color: "var(--spotify-green)" },
                         }}
-                        onDelete={() => deleteRefSong(index)}
+                        onDelete={() => deleteChipData(index, 'referenceSongs')}
                       />
                     </div>
                   ))}
@@ -192,8 +181,8 @@ export default function GeneratePlaylistForm() {
                   row
                   aria-labelledby={`${id}-label`}
                   defaultValue="true"
-                  name="radio-buttons-group"
-                  onChange={handleIncludeRefSongsSelected}
+                  name="includeReferenceSongs"
+                  onChange={handleYesNoSelected}
                 >
                   <FormControlLabel
                     value="true"
@@ -250,7 +239,7 @@ export default function GeneratePlaylistForm() {
                             borderColor: "var(--spotify-green)",
                             "& .MuiChip-deleteIcon": { color: "var(--spotify-green)" },
                           }}
-                          onDelete={() => deleteExcludeArtist(index)}
+                          onDelete={() => deleteChipData(index, 'excludeArtists')}
                         />
                       </div>
                     ))}
@@ -274,8 +263,8 @@ export default function GeneratePlaylistForm() {
                   row
                   aria-labelledby={`${id}-label`}
                   defaultValue="true"
-                  name="radio-buttons-group"
-                  onChange={handleDupeArtistsSelected}
+                  name="allowDuplicateArtists"
+                  onChange={handleYesNoSelected}
                 >
                   <FormControlLabel
                     value="true"
@@ -314,8 +303,8 @@ export default function GeneratePlaylistForm() {
                     row
                     aria-labelledby={`${id}-label`}
                     defaultValue="true"
-                    name="radio-buttons-group"
-                    onChange={handleGenTitleAndDescSelected}
+                    name="generateTitleAndDescription"
+                    onChange={handleYesNoSelected}
                   >
                     <FormControlLabel
                       value="true"
@@ -380,7 +369,7 @@ export default function GeneratePlaylistForm() {
             }} />
         </div>
         <div className='generate-btn-container'>
-          <button type="submit" disabled={isBrewing} className='generate-btn flex-row' onClick={generateBtnClicked}><AutoAwesome sx={{ mr: 1 }}/>
+          <button type="submit" disabled={isBrewing} className='generate-btn flex-row' onClick={brewPlaylistBtnClicked}><AutoAwesome sx={{ mr: 1 }}/>
 
           <p>{isBrewing ? 'Brew Playlist' : 'Brew Playlist'}</p></button>
         </div>

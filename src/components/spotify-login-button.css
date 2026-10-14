@@ -2,16 +2,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
-    width: 250px;
-    padding: 8px 12px;
+    font-size: 16px;
+    width: fit-content;
+    padding: 4px 12px;
     background-color: var(--spotify-green);
     border-color: transparent;
-    border-radius: 5px;
+    border-radius: 33px;
+    margin: 18px;
+    color: var(--spotify-dark-grey);
+    font-weight: 500;
 }
 .spotify-logo {
-    margin-right: auto;
-}
-.spotify-btn span {
-    margin-right: auto;
+    padding: 4px;
+    margin-right: 4px;
 }

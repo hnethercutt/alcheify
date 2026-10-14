@@ -10,12 +10,12 @@ export default function SpotifyLoginButton() {
     >
       <Image
         className="spotify-logo"
-        src="spotify-logo-white.svg"
+        src="spotify-logo-black.svg"
         width="32"
         height="32"
         alt="Sign in with Spotify"
       ></Image>
-      <span>Sign in with Spotify</span>
+      <span>Continue with Spotify</span>
     </button>
   );
 }

@@ -11,7 +11,7 @@ export type PlaylistRequest = {
 
 export type SpotifySong = {
     title: string;
-    artist: string;
+    artists: string;
     album: string;
     coverArtUrl: string;
     id: string;

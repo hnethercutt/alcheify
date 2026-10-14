@@ -22,6 +22,9 @@ export async function refreshSpotifyAccessToken(refreshToken: string) {
     }),
   });
 
+  if (!res.ok) {
+    throw new Error('Failed to get Spotify refresh token');
+  }
   return res.json();
 }
 

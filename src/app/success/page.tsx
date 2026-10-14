@@ -2,7 +2,7 @@
 import { useSearchParams } from "next/navigation";
 import { fetchSpotifyPlaylist } from "@/services/playlist-service";
 import { useEffect, useState } from "react";
-import ParticleBackground from "@/components/particle-background";
+import ParticleBackground from "@/components/animations/particle-background";
 import parse from 'html-react-parser';
 import styles from './success.module.css';
 
@@ -11,6 +11,7 @@ export default function Success() {
     const playlistUrl = params.get('playlistUrl');
     const [embed, setEmbed] = useState<string>('');
 
+    // Display embedded playlist
     useEffect(() => {
         if (playlistUrl) {
             fetchSpotifyPlaylist(playlistUrl).then(function (_embedHtml) {

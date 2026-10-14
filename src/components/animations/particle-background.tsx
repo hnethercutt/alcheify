@@ -7,7 +7,7 @@ export default function ParticleBackground() {
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    if (!container) { return };
 
     const particleCount = 100;
     const fragment = document.createDocumentFragment();

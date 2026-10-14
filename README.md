@@ -129,4 +129,8 @@ For the background animation and loading screen animation, I used the following 
 
 [CSS Particles by rauldronca](https://codepen.io/rauldronca/pen/LgXPgJ)
 
+## License
+
+Alcheify is licensed under the MIT License. See [LICENSE.txt](LICENSE.txt) for more information.
+
 <p align="right">(<a href="#readme">Back to top</a>)</p>

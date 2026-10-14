@@ -15,10 +15,10 @@
 html,
 body {
   width: 100vw;
-  min-height: 100vh;
 }
 
 body {
+  height: 100vh;
   color: var(--foreground);
   background-image: radial-gradient(ellipse at center, var(--dark-blue) 0%, #000 100%);
   font-family: var(--font-inter);
@@ -47,6 +47,11 @@ h1, h2 {
 
 h2 {
   margin-left: 12px;
+}
+
+footer {
+  text-align: center;
+  padding: 12px;
 }
 
 .flex-column {

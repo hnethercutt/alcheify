@@ -89,11 +89,6 @@ export default function GenreSelector({
           },
         }}
       >
-<<<<<<< Updated upstream:src/components/genre-selector.tsx
-        <DialogContent sx={{ pb: 0 }}>
-          <List className="flex-column">
-            {genreData.map((genre, index) => (
-=======
         <DialogContent sx={{ pb: 0, display: "flex" }}>
           <List className="flex-column" sx={{ pr:4 }}>
             {genreList1.map((genre, index) => (
@@ -127,7 +122,6 @@ export default function GenreSelector({
           </List>
           <List className="flex-column">
             {genreList2.map((genre, index) => (
->>>>>>> Stashed changes:src/components/generate/genre-selector.tsx
               <ListItem key={index}>
                 <ListItemIcon>
                   <Checkbox

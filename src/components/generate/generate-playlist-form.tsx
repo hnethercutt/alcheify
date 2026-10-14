@@ -10,7 +10,7 @@ import { useId } from 'react';
 import Image from 'next/image';
 import { AutoAwesomeOutlined, AutoAwesome, AutoFixHighOutlined, LoopOutlined, LabelOutlined } from '@mui/icons-material';
 import './generate-playlist-form.css';
-import BrewAnimation from './brew-animation';
+import BrewAnimation from '../animations/brew-animation';
 
 export default function GeneratePlaylistForm() {
   const [requestFormData, setRequestFormData] = useState<PlaylistRequest>({

@@ -1,5 +1,5 @@
 import styles from './page.module.css';
-import GeneratePlaylistForm from '@/components/generate-playlist-form';
+import GeneratePlaylistForm from '@/components/generate/generate-playlist-form';
 
 export default function Generate() {
   return (

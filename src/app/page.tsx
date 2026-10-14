@@ -1,7 +1,7 @@
 import styles from './page.module.css';
 import SpotifyLoginButton from '@/components/spotify-login-button';
 import Image from 'next/image';
-import ParticleBackground from '@/components/particle-background';
+import ParticleBackground from '@/components/animations/particle-background';
 
 export default function Home() {
   return (

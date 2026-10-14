@@ -2,7 +2,7 @@
 import { useSearchParams } from "next/navigation";
 import { fetchSpotifyPlaylist } from "@/services/playlist-service";
 import { useEffect, useState } from "react";
-import ParticleBackground from "@/components/particle-background";
+import ParticleBackground from "@/components/animations/particle-background";
 import parse from 'html-react-parser';
 import styles from './success.module.css';
 

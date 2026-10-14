@@ -5,7 +5,7 @@ import SpotifySearchBar from './spotify-search-bar';
 import GenreSelector from './genre-selector';
 import type { PlaylistRequest, SpotifySong, SpotifyArtist } from '@/types/playlist';
 import { generatePlaylist } from '@/services/playlist-service';
-import { TextField, Chip, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Select, MenuItem, SelectChangeEvent, Stack } from '@mui/material';
+import { TextField, Chip, FormControl, FormControlLabel, RadioGroup, Radio, Stack } from '@mui/material';
 import { useId } from 'react';
 import Image from 'next/image';
 import { AutoAwesomeOutlined, AutoAwesome, AutoFixHighOutlined, LoopOutlined, LabelOutlined } from '@mui/icons-material';

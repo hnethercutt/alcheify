@@ -1,6 +1,5 @@
 import genreData from '@/data/genres.json';
-import { List, ListItem, ListItemText, ListItemIcon, Collapse, Checkbox, Dialog, DialogContent, DialogActions, Chip, Stack } from '@mui/material';
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { List, ListItem, ListItemText, ListItemIcon, Checkbox, Dialog, DialogContent, DialogActions, Chip, Stack } from '@mui/material';
 import { useState, useEffect, Fragment } from 'react';
 import { MusicOffOutlined } from '@mui/icons-material';
 import _ from 'lodash';

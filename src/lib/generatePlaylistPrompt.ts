@@ -21,7 +21,7 @@ export function generatePlaylistPrompt(data: PlaylistRequest) {
         ${data.notes || 'None'}
 
         REFERENCE SONGS:
-        ${data.referenceSongs?.length ? data.referenceSongs.map((song) => `- ${song.title} by ${song.artist}`).join('\n') : 'None'}
+        ${data.referenceSongs?.length ? data.referenceSongs.map((song) => `- ${song.title} by ${song.artists}`).join('\n') : 'None'}
 
         FILTERS:
         - Duplicate artists allowed: ${data.allowDuplicateArtists ? 'Yes' : 'No'} (If no, DO NOT under ANY circumstance include an artist more than once)

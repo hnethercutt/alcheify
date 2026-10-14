@@ -6,7 +6,7 @@
 <div align="center">
 <img width="128" height="128" alt="alcheify" src="https://github.com/user-attachments/assets/5395e40d-f215-4a8f-8853-9df76b169d5d" />
 
-An alchemy-themed AI-powered playlist generator for Spotify.</div>
+An alchemy themed AI-powered playlist generator for Spotify.</div>
 
 <!--TABLE OF CONTENTS-->
 <details>
@@ -43,7 +43,7 @@ Project svgs aside from the Spotify logo are custom made with Inkscape.
 1. "The Essence" -> Primary ingredient
   * A description of the vibe of the playlist the user wants to create
 2. "Reagants" -> Secondary ingredient(s)
-  * Using a full Spotify autocomplete song search bar, users can select one or more reference songs. If reference songs are provided, the user then has the option to either included those songs in the playlist or simply use them as inspo for Gemini
+  * Using a full Spotify autocomplete song search bar, users can select one or more reference songs. If reference songs are provided, the user then has the option to either include those songs in the playlist or simply use them as inspo for Gemini
 3. "Modifiers" -> Extra customization. Users can choose:
   * Artists to exclude from the playlist
   * Genres to exclude from the playlist

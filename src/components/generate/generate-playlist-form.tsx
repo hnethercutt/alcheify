@@ -124,7 +124,7 @@ export default function GeneratePlaylistForm() {
           <p className="grey-font subheader">
             Describe the overall sound or vibe you're going for
           </p>
-          <div className="vibe flex-column">
+          <div className="essence-txt-field flex-column">
             <TextField
               name="vibe"
               multiline

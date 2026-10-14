@@ -42,6 +42,7 @@ export async function searchSpotify(searchTerm: string, token: string): Promise<
 
     let foundSong = data.tracks.items[0];
 
+    // Need to check if the song is found because gemini may return songs that aren't available on Spotify
     return {
         title: foundSong ? foundSong.name : '',
         artist: foundSong ? foundSong.artists[0].name : '',

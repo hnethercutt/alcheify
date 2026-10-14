@@ -1,13 +1,20 @@
 import { PlaylistRequest, SpotifySong, SpotifyArtist } from "@/types/playlist";
 import _ from 'lodash';
 
+// Creates an empty playlist on the users account
 export async function generatePlaylist(requestData: PlaylistRequest): Promise<string> {
     const res = await fetch('/api/generate', {
         method: 'POST',
         body: JSON.stringify({ prompt: requestData }),
     });
-    // Don't need to do anything with the result currently
+
+    // The generate api handles the entire playlist generation process, so by this point the user has their playlist
     const result = await res.json();
+
+    if(result.error) {
+        throw new Error(result.error);
+    }
+    // So all we need to return is the url in order to embed the playlist on the success page
     return result.playlistUrl;
 }
 
@@ -19,10 +26,15 @@ export async function fetchSongSearchResults(searchTerm: string): Promise<Array<
         const searchResults = await _apiResponse.json();
         // Need to convert each song to the custom SpotifySong type
         spotifySongs = _.map(searchResults.items, function(_searchResultItem) {
+            let songArtists: string[] = [];
+            // Put all artists together for each song so featured artists can be displayed
+            _.forEach(_searchResultItem.artists, function(_artist) {
+                songArtists.push(_artist.name);
+            });
+
             return {
                 title: _searchResultItem.name,
-                // Later I need to modify this so featured artists also show
-                artist: _searchResultItem.artists[0].name,
+                artists: songArtists.join(', '),
                 album: _searchResultItem.album.name,
                 // 3rd image is the largest, so pulling that one specifically
                 coverArtUrl: _searchResultItem.album.images[2].url,
@@ -58,10 +70,9 @@ export async function fetchArtistSearchResults(searchTerm: string): Promise<Arra
     return spotifyArtists;
 }
 
+// Used to get the html code to embed the playlist
 export async function fetchSpotifyPlaylist(playlistUrl: string): Promise<string> {
     const response = await fetch(`https://open.spotify.com/oembed?url=${playlistUrl}`);
-
     const data = await response.json();
-
     return data.html;
 }

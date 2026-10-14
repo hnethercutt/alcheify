@@ -194,6 +194,8 @@ export default function GeneratePlaylistForm() {
                           label={`${item.title} - ${item.artists}`}
                           variant="outlined"
                           sx={{
+                            mt: 1,
+                            mb: 1,
                             color: 'var(--foreground)',
                             borderColor: 'var(--spotify-green)',
                             '& .MuiChip-deleteIcon': {
@@ -291,6 +293,8 @@ export default function GeneratePlaylistForm() {
                             label={`${item.name}`}
                             variant="outlined"
                             sx={{
+                              mt: 2,
+                              mb: 1,
                               color: 'var(--foreground)',
                               borderColor: 'var(--spotify-green)',
                               '& .MuiChip-deleteIcon': {

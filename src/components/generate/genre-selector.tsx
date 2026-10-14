@@ -1,6 +1,5 @@
 import genreData from '@/data/genres.json';
-import { List, ListItem, ListItemText, ListItemIcon, Collapse, Checkbox, Dialog, DialogContent, DialogActions, Chip, Stack } from '@mui/material';
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { List, ListItem, ListItemText, ListItemIcon, Checkbox, Dialog, DialogContent, DialogActions, Chip, Stack } from '@mui/material';
 import { useState, useEffect, Fragment } from 'react';
 import { MusicOffOutlined } from '@mui/icons-material';
 import _ from 'lodash';
@@ -8,19 +7,20 @@ import './genre-selector.css';
 
 // For updating the parent component (the generate playlist form itself)
 interface GenreSelectorProps {
-    onGenresSelected: (genres: string[]) => void;
+  onGenresSelected: (genres: string[]) => void;
 }
 
-export default function GenreSelector({ onGenresSelected }: GenreSelectorProps) {
+export default function GenreSelector({
+  onGenresSelected,
+}: GenreSelectorProps) {
   const [checkedGenres, setCheckedGenres] = useState<string[]>([]);
   const genreList1 = genreData.slice(0, 12);
   const genreList2 = genreData.slice(12)
 
-    useEffect(() => {
-        // Notify parent component when genres/subgenres are checked/unchecked
-        onGenresSelected(checkedGenres);
-    }, [checkedGenres]);
-
+  useEffect(() => {
+    // Notify parent component when genres/subgenres are checked/unchecked
+    onGenresSelected(checkedGenres);
+  }, [checkedGenres]);
 
   const handleCheckGenre = (genre: string) => {
     setCheckedGenres((prevCheckedGenres) => {
@@ -34,8 +34,8 @@ export default function GenreSelector({ onGenresSelected }: GenreSelectorProps) 
     });
   };
 
+  // For opening and closing the dialog box
   const [open, setOpen] = useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -48,16 +48,21 @@ export default function GenreSelector({ onGenresSelected }: GenreSelectorProps) 
     <Fragment>
       {checkedGenres.length > 0 && (
         <div className="chips-container">
-          <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: 'wrap', width: '525px' }}>
+          <Stack
+            direction="row"
+            spacing={1}
+            useFlexGap
+            sx={{ flexWrap: 'wrap', width: '525px' }}
+          >
             {checkedGenres.map((item, index) => (
               <div key={index}>
                 <Chip
                   label={item}
                   variant="outlined"
                   sx={{
-                    color: "var(--foreground)",
-                    borderColor: "var(--spotify-green)",
-                    "& .MuiChip-deleteIcon": { color: "var(--spotify-green)" },
+                    color: 'var(--foreground)',
+                    borderColor: 'var(--spotify-green)',
+                    '& .MuiChip-deleteIcon': { color: 'var(--spotify-green)' },
                   }}
                   onDelete={() => handleCheckGenre(item)}
                 />
@@ -67,21 +72,26 @@ export default function GenreSelector({ onGenresSelected }: GenreSelectorProps) 
         </div>
       )}
       <div className="genre-btn-container">
-        <button className='genre-btn flex-row' onClick={handleClickOpen}><MusicOffOutlined sx={{ mr: 1 }}/><p>Select Genres to Exclude</p></button>
+        <button className="genre-btn flex-row" onClick={handleClickOpen}>
+          <MusicOffOutlined sx={{ mr: 1 }} />
+          <p>Select Genres to Exclude</p>
+        </button>
       </div>
-      <Dialog open={open} onClose={handleClose}
+      <Dialog
+        open={open}
+        onClose={handleClose}
         slotProps={{
           paper: {
             sx: {
               backgroundColor: 'var(--dark-blue)',
-              color: '#fff'
-            }
-          }
+              color: '#fff',
+            },
+          },
         }}
       >
 <<<<<<< Updated upstream:src/components/genre-selector.tsx
-        <DialogContent sx={{pb: 0}}>
-          <List className='flex-column'>
+        <DialogContent sx={{ pb: 0 }}>
+          <List className="flex-column">
             {genreData.map((genre, index) => (
 =======
         <DialogContent sx={{ pb: 0, display: "flex" }}>
@@ -121,12 +131,12 @@ export default function GenreSelector({ onGenresSelected }: GenreSelectorProps) 
               <ListItem key={index}>
                 <ListItemIcon>
                   <Checkbox
-                    size='small'
+                    size="small"
                     edge="start"
                     sx={{
                       color: '#b3b3b3',
                       '&.Mui-checked': {
-                        color: '#1ed760'
+                        color: '#1ed760',
                       },
                     }}
                     disableRipple
@@ -139,16 +149,16 @@ export default function GenreSelector({ onGenresSelected }: GenreSelectorProps) 
                   primary={genre}
                   sx={{
                     '& .MuiListItemText-primary': {
-                      fontSize: '16px'
-                    }
+                      fontSize: '16px',
+                    },
                   }}
                 />
               </ListItem>
             ))}
           </List>
         </DialogContent>
-        <DialogActions sx={{justifyContent: 'center'}}>
-          <button className='close-btn' onClick={handleClose}>Close</button>
+        <DialogActions sx={{ justifyContent: 'center' }}>
+          <button className="close-btn" onClick={handleClose}>Close</button>
         </DialogActions>
       </Dialog>
     </Fragment>

@@ -24,32 +24,39 @@
     cursor: pointer;
 }
 
-.divider {
-    width: 45%;
-    border-bottom: 1.5px solid var(--blue-grey);
-    margin: 12px;
-}
-
-.vibe {
-    align-items: center;
-    margin: 12px;
-    padding: 15px 45px;
-}
-
-.notes {
-    margin: 12px;
-    padding: 15px 45px;
-    align-items: center;
-}
-
 .section-label {
     margin-bottom: 8px;
     font-weight: 600;
 }
 
+.essence {
+    margin-top: 18px;
+}
+
+.essence-txt-field {
+    align-items: center;
+    margin: 12px;
+    padding: 15px 45px;
+}
+
 .search-bar-section {
     padding: 0px 45px;
     margin-top: 12px;
+}
+
+.references-option {
+    justify-content: center;
+}
+
+.references-option p {
+    margin-right: 12px;
+    font-size: 14px;
+}
+
+.exclude-subheader {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .exclude-genres {
@@ -76,8 +83,10 @@
     justify-content: center;
 }
 
-.song-count {
-    padding: 15px 45px 35px;
+.notes {
+    margin: 12px;
+    padding: 15px 45px;
+    align-items: center;
 }
 
 .generate-btn-container {
@@ -118,27 +127,14 @@
     color: var(--spotify-grey-text);
 }
 
-.exclude-subheader {
-    margin-top: 12px;
-    font-size: 16px;
-    font-weight: 600;
-}
-
 .section-margins {
     margin: 18px 0px;
 }
 
-.essence {
-    margin-top: 18px;
-}
-
-.references-option {
-    justify-content: center;
-}
-
-.references-option p {
-    margin-right: 12px;
-    font-size: 14px;
+.divider {
+    width: 45%;
+    border-bottom: 1.5px solid var(--blue-grey);
+    margin: 12px;
 }
 
 .chips-container {

@@ -117,7 +117,7 @@ npm run dev
   <img width="500 alt="Artist Search" src="https://github.com/user-attachments/assets/f6ed15df-5391-40ff-a713-781254a49d71" />
   <img width="500 alt="Genres" src="https://github.com/user-attachments/assets/7f70b66c-5558-4907-a266-06049fe6abf8" /></br>
   <img width="500 alt="Brew Playlist" src="https://github.com/user-attachments/assets/0c010494-fb3c-4650-aad7-3837293df705" />
-  <img width="500 alt="Success" src="https://github.com/user-attachments/assets/bbda6a78-0e95-4017-979d-96c243404b61" />
+  <img width="500 alt="Success" src="https://github.com/user-attachments/assets/bbda6a78-0e95-4017-979d-96c243404b61" /></br>
   <a href="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnBtZWNncDBkYTFhY2J0dDFhb3psazZrZHN3YTI3MzMzbjl3YmJvOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2Yur2zZPnt8HFlGtuv/giphy.gif">Click to View Brew Playlist Animated GIF</a>
 </div>
 

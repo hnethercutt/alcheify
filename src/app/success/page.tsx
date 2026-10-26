@@ -4,7 +4,7 @@ import { fetchSpotifyPlaylist } from "@/services/playlist-service";
 import { useEffect, useState, Suspense } from "react";
 import ParticleBackground from "@/components/animations/particle-background";
 import parse from 'html-react-parser';
-import styles from './success.module.css';
+import styles from './page.module.css';
 
 function SuccessContent() {
     const params = useSearchParams();

@@ -1,12 +1,12 @@
 'use client'
 import { useSearchParams } from "next/navigation";
 import { fetchSpotifyPlaylist } from "@/services/playlist-service";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import ParticleBackground from "@/components/animations/particle-background";
 import parse from 'html-react-parser';
-import styles from './success.module.css';
+import styles from './page.module.css';
 
-export default function Success() {
+function SuccessContent() {
     const params = useSearchParams();
     const playlistUrl = params.get('playlistUrl');
     const [embed, setEmbed] = useState<string>('');
@@ -14,7 +14,7 @@ export default function Success() {
     // Display embedded playlist
     useEffect(() => {
         if (playlistUrl) {
-            fetchSpotifyPlaylist(playlistUrl).then(function (_embedHtml) {
+            fetchSpotifyPlaylist(playlistUrl).then(function(_embedHtml) {
                 setEmbed(_embedHtml);
             });
         }
@@ -30,4 +30,12 @@ export default function Success() {
             <div><a href='/generate'>Brew another playlist</a></div>
         </div>
     );
+}
+
+export default function Success() {
+    return (
+        <Suspense fallback={<p>Loading your playlist...</p>}>
+            <SuccessContent />
+        </Suspense>
+    )
 }
